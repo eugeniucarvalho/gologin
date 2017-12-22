@@ -6,7 +6,7 @@ import (
 	"net/url"
 	"testing"
 
-	"github.com/dghubble/gologin/testutils"
+	"github.com/jbcjorge/gologin/testutils"
 	"github.com/stretchr/testify/assert"
 )
 
