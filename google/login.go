@@ -4,8 +4,8 @@ import (
 	"errors"
 	"net/http"
 
-	"github.com/dghubble/gologin"
-	oauth2Login "github.com/dghubble/gologin/oauth2"
+	"github.com/jbcjorge/gologin"
+	oauth2Login "github.com/jbcjorge/gologin/oauth2"
 	"golang.org/x/oauth2"
 	google "google.golang.org/api/oauth2/v2"
 )

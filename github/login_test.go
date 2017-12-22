@@ -7,10 +7,10 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/dghubble/gologin"
-	oauth2Login "github.com/dghubble/gologin/oauth2"
-	"github.com/dghubble/gologin/testutils"
 	"github.com/google/go-github/github"
+	"github.com/jbcjorge/gologin"
+	oauth2Login "github.com/jbcjorge/gologin/oauth2"
+	"github.com/jbcjorge/gologin/testutils"
 	"github.com/stretchr/testify/assert"
 	"golang.org/x/oauth2"
 )
