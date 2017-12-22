@@ -8,9 +8,9 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/dghubble/gologin"
-	"github.com/dghubble/gologin/facebook"
 	"github.com/dghubble/sessions"
+	"github.com/jbcjorge/gologin"
+	"github.com/jbcjorge/gologin/facebook"
 	"golang.org/x/oauth2"
 	facebookOAuth2 "golang.org/x/oauth2/facebook"
 )

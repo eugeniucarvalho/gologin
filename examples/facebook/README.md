@@ -5,12 +5,12 @@ Login with Facebook allows users to login to any web app with their Facebook acc
 
 ## Web
 
-Package `gologin` provides Go handlers for the Facebook OAuth2 Authorization flow and for obtaining the Facebook [User struct](https://github.com/dghubble/gologin/blob/master/facebook/verify.go).
+Package `gologin` provides Go handlers for the Facebook OAuth2 Authorization flow and for obtaining the Facebook [User struct](https://github.com/jbcjorge/gologin/blob/master/facebook/verify.go).
 
 ### Getting Started
 
-    go get github.com/dghubble/gologin/facebook
-    cd $GOPATH/src/github.com/dghubble/gologin/examples/facebook
+    go get github.com/jbcjorge/gologin/facebook
+    cd $GOPATH/src/github.com/jbcjorge/gologin/examples/facebook
     go get .
 
 ## Example App

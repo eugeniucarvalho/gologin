@@ -1,7 +1,7 @@
-# gologin [![Build Status](https://travis-ci.org/dghubble/gologin.svg?branch=master)](https://travis-ci.org/dghubble/gologin) [![GoDoc](https://godoc.org/github.com/dghubble/gologin?status.png)](https://godoc.org/github.com/dghubble/gologin)
+# gologin [![Build Status](https://travis-ci.org/dghubble/gologin.svg?branch=master)](https://travis-ci.org/dghubble/gologin) [![GoDoc](https://godoc.org/github.com/jbcjorge/gologin?status.png)](https://godoc.org/github.com/jbcjorge/gologin)
 <img align="right" src="https://storage.googleapis.com/dghubble/gologin.png">
 
-Package `gologin` provides chainable login `http.Handler`'s for [Google](http://godoc.org/github.com/dghubble/gologin/google), [Github](http://godoc.org/github.com/dghubble/gologin/github), [Twitter](http://godoc.org/github.com/dghubble/gologin/twitter), [Facebook](http://godoc.org/github.com/dghubble/gologin/facebook), [Bitbucket](http://godoc.org/github.com/dghubble/gologin/bitbucket), [Tumblr](http://godoc.org/github.com/dghubble/gologin/tumblr), or any [OAuth1](http://godoc.org/github.com/dghubble/gologin/oauth1) or [OAuth2](http://godoc.org/github.com/dghubble/gologin/oauth2) authentication providers.
+Package `gologin` provides chainable login `http.Handler`'s for [Google](http://godoc.org/github.com/jbcjorge/gologin/google), [Github](http://godoc.org/github.com/jbcjorge/gologin/github), [Twitter](http://godoc.org/github.com/jbcjorge/gologin/twitter), [Facebook](http://godoc.org/github.com/jbcjorge/gologin/facebook), [Bitbucket](http://godoc.org/github.com/jbcjorge/gologin/bitbucket), [Tumblr](http://godoc.org/github.com/jbcjorge/gologin/tumblr), or any [OAuth1](http://godoc.org/github.com/jbcjorge/gologin/oauth1) or [OAuth2](http://godoc.org/github.com/jbcjorge/gologin/oauth2) authentication providers.
 
 Choose a subpackage. Register the `LoginHandler` and `CallbackHandler` for web logins or the `TokenHandler` for (mobile) token logins. Get the authenticated user or access token from the request `context`.
 
@@ -17,11 +17,11 @@ See [examples](examples) for tutorials with apps you can run from the command li
 
 ## Install
 
-    go get github.com/dghubble/gologin
+    go get github.com/jbcjorge/gologin
 
 ## Docs
 
-Read [GoDoc](https://godoc.org/github.com/dghubble/gologin) or check the [examples](examples).
+Read [GoDoc](https://godoc.org/github.com/jbcjorge/gologin) or check the [examples](examples).
 
 ## Overview
 
@@ -118,7 +118,7 @@ See the [Twitter tutorial](examples/twitter) for a web app you can run from the 
 
 OAuth2 `StateHandler` implements OAuth 2 [RFC 6749](https://tools.ietf.org/html/rfc6749) 10.12 CSRF Protection using non-guessable values in short-lived HTTPS-only cookies to provide reasonable assurance the user in the login phase and callback phase are the same. If you wish to implement this differently, write a `http.Handler` which sets a *state* in the ctx, which is expected by LoginHandler and CallbackHandler.
 
-You may use `oauth2.WithState(context.Context, state string)` for this. [docs](https://godoc.org/github.com/dghubble/gologin/oauth2#WithState)
+You may use `oauth2.WithState(context.Context, state string)` for this. [docs](https://godoc.org/github.com/jbcjorge/gologin/oauth2#WithState)
 
 ### Failure Handlers
 

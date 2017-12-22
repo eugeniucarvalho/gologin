@@ -9,10 +9,10 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/dghubble/gologin/twitter"
 	"github.com/dghubble/oauth1"
 	twitterOAuth1 "github.com/dghubble/oauth1/twitter"
 	"github.com/dghubble/sessions"
+	"github.com/jbcjorge/gologin/twitter"
 )
 
 const (
