@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/dghubble/sling"
+	"github.com/jbcjorge/sling"
 )
 
 const facebookAPI = "https://graph.facebook.com/v2.11/"

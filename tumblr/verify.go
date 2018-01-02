@@ -3,7 +3,7 @@ package tumblr
 import (
 	"net/http"
 
-	"github.com/dghubble/sling"
+	"github.com/jbcjorge/sling"
 )
 
 const tumblrAPI = "https://api.tumblr.com/v2/"

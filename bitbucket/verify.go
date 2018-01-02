@@ -3,7 +3,7 @@ package bitbucket
 import (
 	"net/http"
 
-	"github.com/dghubble/sling"
+	"github.com/jbcjorge/sling"
 )
 
 const bitbucketAPI = "https://bitbucket.org/api/2.0/"
