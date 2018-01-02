@@ -2,6 +2,7 @@ package facebook
 
 import (
 	"net/http"
+	"strings"
 
 	"github.com/dghubble/sling"
 )
@@ -12,18 +13,9 @@ const facebookAPI = "https://graph.facebook.com/v2.11/"
 //
 // Note that user ids are unique to each app.
 type User struct {
-	ID       string `json:"id"`
-	Name     string `json:"name"`
-	Email    string `json:"email"`
-	Verified bool   `json:"verified"`
-	Picture  struct {
-		Data struct {
-			Height     int    `json:"height"`
-			Width      int    `json:"width"`
-			URL        string `json:"url"`
-			Silhouette bool   `json:"is_silhouette"`
-		}
-	} `json:"picture"`
+	ID    string `json:"id"`
+	Name  string `json:"name"`
+	Email string `json:"email"`
 }
 
 // client is a Facebook client for obtaining the current User.
@@ -40,12 +32,15 @@ func newClient(httpClient *http.Client) *client {
 	}
 }
 
-func (c *client) Me() (*User, *http.Response, error) {
-	//user := new(User)
-	var user interface{}
+func (c *client) Me(additionalFields []string) (*User, *http.Response, error) {
+	user := new(User)
+	var fields string
+	if len(additionalFields) > 0 {
+		fields = "," + strings.Join(additionalFields[:], ",")
+	}
 	// Facebook returns JSON as Content-Type text/javascript :(
 	// Set Accept header to receive proper Content-Type application/json
 	// so Sling will decode into the struct
-	resp, err := c.sling.New().Set("Accept", "application/json").Get("me?fields=name,email,picture,verified").ReceiveSuccess(user)
+	resp, err := c.sling.New().SaveBody(true).Set("Accept", "application/json").Get("me?fields=name,email" + fields).ReceiveSuccess(user)
 	return user, resp, err
 }

@@ -1,6 +1,7 @@
 package facebook
 
 import (
+	"bytes"
 	"errors"
 	"net/http"
 
@@ -36,8 +37,8 @@ func LoginHandler(config *oauth2.Config, failure http.Handler) http.Handler {
 // Facebook access token and User to the ctx. If authentication succeeds,
 // handling delegates to the success handler, otherwise to the failure
 // handler.
-func CallbackHandler(config *oauth2.Config, success, failure http.Handler) http.Handler {
-	success = facebookHandler(config, success, failure)
+func CallbackHandler(config *oauth2.Config, additionalFields []string, success, failure http.Handler) http.Handler {
+	success = facebookHandler(config, additionalFields, success, failure)
 	return oauth2Login.CallbackHandler(config, success, failure)
 }
 
@@ -45,7 +46,7 @@ func CallbackHandler(config *oauth2.Config, success, failure http.Handler) http.
 // to get the corresponding Facebook User. If successful, the user is added to
 // the ctx and the success handler is called. Otherwise, the failure handler
 // is called.
-func facebookHandler(config *oauth2.Config, success, failure http.Handler) http.Handler {
+func facebookHandler(config *oauth2.Config, additionalFields []string, success, failure http.Handler) http.Handler {
 	if failure == nil {
 		failure = gologin.DefaultFailureHandler
 	}
@@ -59,7 +60,7 @@ func facebookHandler(config *oauth2.Config, success, failure http.Handler) http.
 		}
 		httpClient := config.Client(ctx, token)
 		facebookService := newClient(httpClient)
-		user, resp, err := facebookService.Me()
+		user, resp, err := facebookService.Me(additionalFields)
 		err = validateResponse(user, resp, err)
 		if err != nil {
 			ctx = gologin.WithError(ctx, err)
@@ -67,6 +68,9 @@ func facebookHandler(config *oauth2.Config, success, failure http.Handler) http.
 			return
 		}
 		ctx = WithUser(ctx, user)
+		buf := new(bytes.Buffer)
+		buf.ReadFrom(resp.Body)
+		ctx = WithRawJSON(ctx, buf.String())
 		success.ServeHTTP(w, req.WithContext(ctx))
 	}
 	return http.HandlerFunc(fn)
