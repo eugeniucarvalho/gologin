@@ -41,6 +41,6 @@ func (c *client) Me(additionalFields []string) (*User, *http.Response, error) {
 	// Facebook returns JSON as Content-Type text/javascript :(
 	// Set Accept header to receive proper Content-Type application/json
 	// so Sling will decode into the struct
-	resp, err := c.sling.New().SaveBody(true).Set("Accept", "application/json").Get("me?fields=name,email" + fields).ReceiveSuccess(user)
+	resp, err := c.sling.New().SaveResponseBody().Set("Accept", "application/json").Get("me?fields=name,email" + fields).ReceiveSuccess(user)
 	return user, resp, err
 }
