@@ -44,7 +44,7 @@ func StateHandler(config gologin.CookieConfig, success http.Handler) http.Handle
 
 // LoginHandler handles OAuth2 login requests by reading the state value from
 // the ctx and redirecting requests to the AuthURL with that state value.
-func LoginHandler(config *oauth2.Config, failure http.Handler, opts ...AuthCodeOption) http.Handler {
+func LoginHandler(config *oauth2.Config, failure http.Handler, opts ...oauth2.AuthCodeOption) http.Handler {
 	if failure == nil {
 		failure = gologin.DefaultFailureHandler
 	}
