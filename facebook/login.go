@@ -29,8 +29,8 @@ func StateHandler(config gologin.CookieConfig, success http.Handler) http.Handle
 
 // LoginHandler handles Facebook login requests by reading the state value
 // from the ctx and redirecting requests to the AuthURL with that state value.
-func LoginHandler(config *oauth2.Config, failure http.Handler, opts ...AuthCodeOption) http.Handler {
-	return oauth2Login.LoginHandler(config, failure, opts)
+func LoginHandler(config *oauth2.Config, failure http.Handler, opts ...oauth2.AuthCodeOption) http.Handler {
+	return oauth2Login.LoginHandler(config, failure, opts...)
 }
 
 // CallbackHandler handles Facebook redirection URI requests and adds the

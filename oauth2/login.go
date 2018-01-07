@@ -56,7 +56,7 @@ func LoginHandler(config *oauth2.Config, failure http.Handler, opts ...oauth2.Au
 			failure.ServeHTTP(w, req.WithContext(ctx))
 			return
 		}
-		authURL := config.AuthCodeURL(state, opts)
+		authURL := config.AuthCodeURL(state, opts...)
 		http.Redirect(w, req, authURL, http.StatusFound)
 	}
 	return http.HandlerFunc(fn)
